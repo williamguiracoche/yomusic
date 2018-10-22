@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -15,44 +15,44 @@ item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$
 @app.route('/')
 @app.route('/restaurants')
 def showRestaurants():
-    output = "This page will show all my restaurants"
-    return output
+    #output = "This page will show all my restaurants"
+    return render_template('restaurants.html', restaurants = restaurants)
 
 @app.route('/restaurant/new')
 def newRestaurant():
-    output = "This page will be for making a new restaurant"
-    return output
+    #output = "This page will be for making a new restaurant"
+    return render_template('newRestaurant.html')
 
 @app.route('/restaurant/<int:restaurant_id>/edit')
 def editRestaurant(restaurant_id):
-    output = "This page will be for editing restaurant %s" %restaurant_id
-    return output
+    #output = "This page will be for editing restaurant %s" %restaurant_id
+    return render_template('editRestaurant.html', restaurant = restaurant)
 
 @app.route('/restaurant/<int:restaurant_id>/delete')
 def deleteRestaurant(restaurant_id):
-    output = "This page will be for deleting restaurant %s" %restaurant_id
-    return output
+    #output = "This page will be for deleting restaurant %s" %restaurant_id
+    return render_template('deleteRestaurant.html', restaurant = restaurant)
 
 @app.route('/restaurant/<int:restaurant_id>')
 @app.route('/restaurant/<int:restaurant_id>/menu')
 def showMenu(restaurant_id):
-    output = "This page is the menu for restaurant %s" %restaurant_id
-    return output
+    #output = "This page is the menu for restaurant %s" %restaurant_id
+    return render_template('menu.html',restaurant = restaurant, items = items)
 
 @app.route('/restaurant/<int:restaurant_id>/menu/new')
 def newMenuItem(restaurant_id):
-    output = "This page is for making a new menu item for restaurant %s" %restaurant_id
-    return output
+    #output = "This page is for making a new menu item for restaurant %s" %restaurant_id
+    return render_template('newMenu.html', restaurant = restaurant)
 
 @app.route('/restaurant/<int:restaurant_id>/<int:menu_id>/edit')
 def editMenuItem(restaurant_id, menu_id):
-    output = "This page is for editing menu item %s for restaurant %s" %(menu_id, restaurant_id)
-    return output
+    #output = "This page is for editing menu item %s for restaurant %s" %(menu_id, restaurant_id)
+    return render_template('editMenu.html', restaurant = restaurant, item= item)
 
 @app.route('/restaurant/<int:restaurant_id>/<int:menu_id>/delete')
 def deleteMenuItem(restaurant_id, menu_id):
-    output = "This page is for deleting menu item %s for restaurant %s" %(menu_id, restaurant_id)
-    return output
+    #output = "This page is for deleting menu item %s for restaurant %s" %(menu_id, restaurant_id)
+    return render_template('deleteMenu.html', restaurant= restaurant, item= item)
 
 
 if __name__ == '__main__':
