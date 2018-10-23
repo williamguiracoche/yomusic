@@ -1,2 +1,18 @@
-This is restaurants.html <br>
-This page will show all my restaurants
+<html>
+    <head>
+        <h1> NYC Restaurant Site </h1>
+    </head>
+	<body>
+
+    <h2>List of all Restaurants</h2>
+	<a href='#'>Create New Restaurant</a>
+
+	{% for restaurant in restaurants %}
+    <p>{{restaurant.name}}</p>
+	<a href='#'>Edit</a>
+	<a href='#'> Delete</a>
+    <br>
+	{% endfor %}
+
+	</body>
+</html>
