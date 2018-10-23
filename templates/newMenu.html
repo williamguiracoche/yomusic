@@ -1,2 +1,30 @@
-This is newMenu.html <br>
-This page is for making a new menu item for restaurant {{restaurant.name}}
+<html>
+    <head>
+        <h1> NYC Restaurant Site </h1>
+    </head>
+	<body>
+
+    <h2>Create Menu Item for {{restaurant.name}}</h2>
+    <form action='#' method = 'post'>
+    Name: <br>
+    <input type ='text' size='30' name='name'>
+    <br> <br>
+    Price: <br>
+    <input type ='text' size='30' name='price'>
+    <br> <br>
+    Description: <br>
+    <input type ='text' size='30' name='description'>
+    <br> <br>
+    Course: <br>
+    <input type="radio" name="course" value="Appetizer"> Appetizer <br>
+    <input type="radio" name="course" value="Entree"> Entree <br>
+    <input type="radio" name="course" value="Dessert"> Dessert <br>
+    <input type="radio" name="course" value="Beverage"> Beverage <br>
+    <br>
+    <input type='submit' value='Create'>
+    </form>
+
+	<a href='#'> Back to Restaurants</a>
+
+	</body>
+</html>
