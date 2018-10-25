@@ -79,10 +79,20 @@ def newSong(genre_id):
     else:
         return render_template('newSong.html', genre = genre)
 
-@app.route('/genre/<int:genre_id>/<int:song_id>/edit')
+@app.route('/genre/<int:genre_id>/<int:song_id>/edit', methods=['GET', 'POST'])
 def editSong(genre_id, song_id):
-    #return "This page is for editing song %s for genre %s" %(song_id, genre_id)
-    return render_template('editSong.html', genre = genre, song= song)
+    genre = session.query(Genre).filter_by(id= genre_id).one()
+    editedSong = session.query(Song).filter_by(id= song_id).one()
+    if request.method == 'POST':
+        if request.form['name']:
+            editedSong.name = request.form['name']
+        if request.form['artist']:
+            editedSong.artist = request.form['artist']
+        if request.form['album']:
+            editedSong.album = request.form['album']
+        return redirect(url_for('showPlaylist', genre_id = genre_id))
+    else:
+        return render_template('editSong.html', genre = genre, song= editedSong)
 
 @app.route('/genre/<int:genre_id>/<int:song_id>/delete')
 def deleteSong(genre_id, song_id):

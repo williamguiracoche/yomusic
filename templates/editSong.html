@@ -5,18 +5,18 @@
 	<body>
 
     <h2>Edit Song</h2>
-    <form action='#' method = 'post'>
+    <form action='{{url_for('editSong', genre_id= genre.id, song_id = song.id)}}' method = 'post'>
     	Name: <br>
     	<input type ='text' size='30' name='name' placeholder="{{song.name}}">
         <br><br>
         Artist <br>
         <input type ='text' size='30' name='artist' placeholder="{{song.artist}}">
         <br><br>
-        Aalbum: <br>
+        Album: <br>
         <input type ='text' size='30' name='album' placeholder="{{song.album}}">
         <br><br>
         <input type='submit' value='Edit'>
     </form>
-    <a href='#'> Cancel</a>
+    <a href='{{url_for('showPlaylist', genre_id = genre.id)}}'> Cancel</a>
 	</body>
 </html>
