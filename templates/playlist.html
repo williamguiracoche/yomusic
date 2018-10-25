@@ -1,74 +1,21 @@
 <html>
     <head>
-        <h1> NYC Restaurant Site </h1>
+        <h1> YoMusic </h1>
     </head>
 	<body>
 
-    <h2>{{restaurant.name}} Menu</h2>
-	<a href='#'>Create New Menu Item</a>
+    <h2>{{genre.name}} Playlist</h2>
+	<a href='#'>Add New Song</a>
+    <br><br>
 
-    <h3 class = 'course'> Appetizers </h3>
-    {% for item in items %}
-        {% if item.course == 'Appetizer' %}
-
-        <div class = 'nameAndPrice'>
-            <span class = 'name'> {{item.name}} </span>
-            <span class = 'price'> {{item.price}} </span>
-        </div>
-            <p>{{item.description}}</p>
-
-        <a href='#'>Edit</a>
-        <a href='#'> Delete</a>
-        <br><br>
-        {% endif %}
-    {% endfor %}
-
-    <h3 class = 'course'> Entrees </h3>
-    {% for item in items %}
-        {% if item.course == 'Entree' %}
-
-        <div class = 'nameAndPrice'>
-            <span class = 'name'> {{item.name}} </span>
-            <span class = 'price'> {{item.price}} </span>
-        </div>
-            <p>{{item.description}}</p>
-
+    {% for song in songs %}
+        <span class = 'name'> {{song.name}} - </span>
+        <span class = 'artist'> {{song.artist}} </span>
+        <br>
         <a href='#'>Edit</a>
         <a href='#'> Delete</a>
         <br><br>
 
-        {% endif %}
-    {% endfor %}
-
-    <h3 class = 'course'> Desserts </h3>
-    {% for item in items %}
-        {% if item.course == 'Dessert' %}
-
-        <div class = 'nameAndPrice'>
-            <span class = 'name'> {{item.name}} </span>
-            <span class = 'price'> {{item.price}} </span>
-        </div>
-            <p>{{item.description}}</p>
-
-        <a href='#'>Edit</a>
-        <a href='#'> Delete</a>
-        <br><br>
-        {% endif %}
-    {% endfor %}
-
-    <h3 class = 'course'> Beverages </h3>
-    {% for item in items %}
-        {% if item.course == 'Beverage' %}
-        <div class = 'nameAndPrice'>
-            <span class = 'name'> {{item.name}} </span>
-            <span class = 'price'> {{item.price}} </span>
-        </div>
-            <p>{{item.description}}</p>
-
-        <a href='#'>Edit</a>
-        <a href='#'> Delete</a>
-        <br><br>
-        {% endif %}
     {% endfor %}
 
 	</body>
