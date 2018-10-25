@@ -5,12 +5,12 @@
 	<body>
 
     <h2>Edit Genre</h2>
-    <form action='#' method = 'post'>
+    <form action='{{url_for('editGenre', genre_id = genre.id )}}' method = 'post'>
     	Name: <br>
     	<input type ='text' size='20' name='name' placeholder="{{genre.name}}">
         <input type='submit' value='Edit'>
     </form>
-    <a href='#'> Cancel</a>
+    <a href='{{url_for('showGenres')}}'> Cancel</a>
 
 
 	</body>

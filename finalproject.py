@@ -38,10 +38,16 @@ def newGenre():
     else:
         return render_template('newGenre.html')
 
-@app.route('/genre/<int:genre_id>/edit')
+@app.route('/genre/<int:genre_id>/edit', methods=['GET', 'POST'])
 def editGenre(genre_id):
-    #return "This page will be for editing genre %s" %genre_id
-    return render_template('editGenre.html', genre = genre)
+    editedGenre = session.query(Genre).filter_by(id = genre_id).one()
+    if request.method == 'POST':
+        editedGenre.name = request.form['name']
+        session.add(editedGenre)
+        session.commit()
+        return redirect(url_for('showGenres'))
+    else:
+        return render_template('editGenre.html', genre = editedGenre)
 
 @app.route('/genre/<int:genre_id>/delete')
 def deleteGenre(genre_id):
