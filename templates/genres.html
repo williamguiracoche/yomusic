@@ -9,8 +9,8 @@
 
 	{% for genre in genres %}
     <p>{{genre.name}}</p>
-	<a href='#'>Edit</a>
-	<a href='#'> Delete</a>
+	<a href='{{ url_for('editGenre', genre_id = genre.id)}}'>Edit</a>
+	<a href='{{ url_for('deleteGenre', genre_id = genre.id)}}'> Delete</a>
     <br>
 	{% endfor %}
 
