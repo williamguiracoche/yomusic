@@ -90,6 +90,8 @@ def editSong(genre_id, song_id):
             editedSong.artist = request.form['artist']
         if request.form['album']:
             editedSong.album = request.form['album']
+        session.add(editedSong)
+        session.commit()
         return redirect(url_for('showPlaylist', genre_id = genre_id))
     else:
         return render_template('editSong.html', genre = genre, song= editedSong)
