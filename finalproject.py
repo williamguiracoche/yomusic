@@ -31,8 +31,8 @@ def editGenre(genre_id):
 
 @app.route('/genre/<int:genre_id>/delete')
 def deleteGenre(genre_id):
-    return "This page will be for deleting genre %s" %genre_id
-    #return render_template('deleteGenre.html', genre = genre)
+    #return "This page will be for deleting genre %s" %genre_id
+    return render_template('deleteGenre.html', genre = genre)
 
 @app.route('/genre/<int:genre_id>')
 @app.route('/genre/<int:genre_id>/playlist')
