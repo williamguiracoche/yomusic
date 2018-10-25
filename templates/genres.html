@@ -1,14 +1,14 @@
 <html>
     <head>
-        <h1> NYC Restaurant Site </h1>
+        <h1> YoMusic </h1>
     </head>
 	<body>
 
-    <h2>List of all Restaurants</h2>
-	<a href='#'>Create New Restaurant</a>
+    <h2>Your genres</h2>
+	<a href='#'>Add New Genre</a>
 
-	{% for restaurant in restaurants %}
-    <p>{{restaurant.name}}</p>
+	{% for genre in genres %}
+    <p>{{genre.name}}</p>
 	<a href='#'>Edit</a>
 	<a href='#'> Delete</a>
     <br>
