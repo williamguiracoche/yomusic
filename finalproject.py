@@ -16,43 +16,43 @@ song =  {'name':'Mr. Brightside', 'artist':'The Killers', 'album':'Hot Fuss'}
 @app.route('/music')
 @app.route('/genres')
 def showGenres():
-    output = "This page will show all my genres"
+    return "This page will show all my genres"
     #return render_template('genres.html', genres = genres)
 
 @app.route('/genre/new')
 def newGenre():
-    output = "This page will be for making a new genre"
+    return "This page will be for making a new genre"
     #return render_template('newGenre.html')
 
 @app.route('/genre/<int:genre_id>/edit')
 def editGenre(genre_id):
-    output = "This page will be for editing genre %s" %genre_id
+    return "This page will be for editing genre %s" %genre_id
     #return render_template('editGenre.html', genre = genre)
 
 @app.route('/genre/<int:genre_id>/delete')
 def deleteGenre(genre_id):
-    output = "This page will be for deleting genre %s" %genre_id
+    return "This page will be for deleting genre %s" %genre_id
     #return render_template('deleteGenre.html', genre = genre)
 
 @app.route('/genre/<int:genre_id>')
 @app.route('/genre/<int:genre_id>/playlist')
 def showPlaylist(genre_id):
-    output = "This page is the playlist for genre %s" %genre_id
+    return "This page is the playlist for genre %s" %genre_id
     #return render_template('playlist.html',genre = genre, songs = songs)
 
 @app.route('/genre/<int:genre_id>/new')
 def newSong(genre_id):
-    output = "This page is for making a new song for genre %s" %genre_id
+    return "This page is for making a new song for genre %s" %genre_id
     #return render_template('newPlaylist.html', genre = genre)
 
-@app.route('/genre/<int:genre_id>/<int:playlist_id>/edit')
+@app.route('/genre/<int:genre_id>/<int:song_id>/edit')
 def editSong(genre_id, song_id):
-    output = "This page is for editing song %s for genre %s" %(song_id, genre_id)
+    return "This page is for editing song %s for genre %s" %(song_id, genre_id)
     #return render_template('editPlaylist.html', genre = genre, song= song)
 
 @app.route('/genre/<int:genre_id>/<int:song_id>/delete')
 def deleteSong(genre_id, song_id):
-    output = "This page is for deleting playlist song %s for genre %s" %(playlist_id, genre_id)
+    return "This page is for deleting playlist song %s for genre %s" %(song_id, genre_id)
     #return render_template('deletePlaylist.html', genre= genre, song= song)
 
 
