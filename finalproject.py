@@ -25,7 +25,7 @@ song =  {'name':'Mr. Brightside', 'artist':'The Killers', 'album':'Hot Fuss'}
 @app.route('/music')
 @app.route('/genres')
 def showGenres():
-    #return "This page will show all my genres"
+    genres = session.query(Genre).all()
     return render_template('genres.html', genres = genres)
 
 @app.route('/genre/new')
