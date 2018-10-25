@@ -1,30 +1,22 @@
 <html>
     <head>
-        <h1> NYC Restaurant Site </h1>
+        <h1> YoMusic </h1>
     </head>
 	<body>
 
-    <h2>Create Menu Item for {{restaurant.name}}</h2>
+    <h2> Add Song to {{genre.name}}</h2>
     <form action='#' method = 'post'>
     Name: <br>
     <input type ='text' size='30' name='name'>
     <br> <br>
-    Price: <br>
-    <input type ='text' size='30' name='price'>
+    Artist: <br>
+    <input type ='text' size='30' name='artist'>
     <br> <br>
-    Description: <br>
-    <input type ='text' size='30' name='description'>
+    Album: <br>
+    <input type ='text' size='30' name='album'>
     <br> <br>
-    Course: <br>
-    <input type="radio" name="course" value="Appetizer"> Appetizer <br>
-    <input type="radio" name="course" value="Entree"> Entree <br>
-    <input type="radio" name="course" value="Dessert"> Dessert <br>
-    <input type="radio" name="course" value="Beverage"> Beverage <br>
-    <br>
-    <input type='submit' value='Create'>
-    </form>
 
-	<a href='#'> Back to Restaurants</a>
+	<a href='#'> Back to {{genre.name}} Playlist</a>
 
 	</body>
 </html>
