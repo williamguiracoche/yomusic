@@ -5,6 +5,12 @@ from database_setup import Base, Genre, Song
 
 app = Flask(__name__)
 
+engine = create_engine('sqlite:///music.db', connect_args={'check_same_thread': False})
+Base.metadata.bind = engine
+
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+
 #Sample Genres
 genre = {'name': 'Rock', 'id': '1'}
 
