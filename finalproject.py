@@ -47,8 +47,8 @@ def newSong(genre_id):
 
 @app.route('/genre/<int:genre_id>/<int:song_id>/edit')
 def editSong(genre_id, song_id):
-    return "This page is for editing song %s for genre %s" %(song_id, genre_id)
-    #return render_template('editPlaylist.html', genre = genre, song= song)
+    #return "This page is for editing song %s for genre %s" %(song_id, genre_id)
+    return render_template('editSong.html', genre = genre, song= song)
 
 @app.route('/genre/<int:genre_id>/<int:song_id>/delete')
 def deleteSong(genre_id, song_id):

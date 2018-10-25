@@ -1,17 +1,22 @@
 <html>
     <head>
-        <h1> NYC Restaurant Site </h1>
+        <h1> YoMusic </h1>
     </head>
 	<body>
 
-    <h2>Edit Menu Item</h2>
+    <h2>Edit Song</h2>
     <form action='#' method = 'post'>
     	Name: <br>
-    	<input type ='text' size='30' name='name' placeholder="{{item.name}}">
+    	<input type ='text' size='30' name='name' placeholder="{{song.name}}">
+        <br><br>
+        Artist <br>
+        <input type ='text' size='30' name='artist' placeholder="{{song.artist}}">
+        <br><br>
+        Aalbum: <br>
+        <input type ='text' size='30' name='album' placeholder="{{song.album}}">
+        <br><br>
         <input type='submit' value='Edit'>
     </form>
     <a href='#'> Cancel</a>
-
-
 	</body>
 </html>
