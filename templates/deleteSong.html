@@ -5,10 +5,10 @@
 	<body>
 
     <h2>Are you sure you want to delete {{song.name}} from your {{genre.name}} Playlist?</h2>
-    <form action='#' method = 'post'>
+    <form action='{{url_for('deleteSong', genre_id= genre.id, song_id= song.id)}}' method = 'post'>
         <input type='submit' value='Delete'>
     </form>
-    <a href='#'> Cancel</a>
+    <a href='{{url_for('showPlaylist', genre_id= genre.id)}}'> Cancel</a>
 
 	</body>
 </html>
