@@ -62,8 +62,9 @@ def deleteGenre(genre_id):
 @app.route('/genre/<int:genre_id>')
 @app.route('/genre/<int:genre_id>/playlist')
 def showPlaylist(genre_id):
-    #return "This page is the playlist for genre %s" %genre_id
-    return render_template('playlist.html',genre = genre, songs = songs)
+    genre = session.query(Genre).filter_by(id= genre_id).one()
+    songs = session.query(Song).filter_by(genre= genre)
+    return render_template('playlist.html', genre= genre, songs= songs)
 
 @app.route('/genre/<int:genre_id>/new')
 def newSong(genre_id):

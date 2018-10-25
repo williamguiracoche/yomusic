@@ -12,8 +12,8 @@
         <span class = 'name'> {{song.name}} - </span>
         <span class = 'artist'> {{song.artist}} </span>
         <br>
-        <a href='#'>Edit</a>
-        <a href='#'> Delete</a>
+        <a href='{{url_for('editSong', genre_id= genre.id, song_id= song.id)}}'>Edit</a>
+        <a href='{{url_for('deleteSong', genre_id= genre.id, song_id= song.id)}}'>Delete</a>
         <br><br>
 
     {% endfor %}
