@@ -21,8 +21,8 @@ def showGenres():
 
 @app.route('/genre/new')
 def newGenre():
-    return "This page will be for making a new genre"
-    #return render_template('newGenre.html')
+    #return "This page will be for making a new genre"
+    return render_template('newGenre.html')
 
 @app.route('/genre/<int:genre_id>/edit')
 def editGenre(genre_id):
