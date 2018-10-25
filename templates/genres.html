@@ -5,7 +5,7 @@
 	<body>
 
     <h2>Your genres</h2>
-	<a href='#'>Add New Genre</a>
+	<a href="{{ url_for('newGenre')}}">Add New Genre</a>
 
 	{% for genre in genres %}
     <p>{{genre.name}}</p>
