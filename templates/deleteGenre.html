@@ -5,10 +5,10 @@
 	<body>
 
     <h2>Are you sure you want to delete {{genre.name}}?</h2>
-    <form action='#' method = 'post'>
+    <form action='{{url_for('deleteGenre', genre_id = genre.id)}}' method = 'post'>
         <input type='submit' value='Delete'>
     </form>
-    <a href='#'> Cancel</a>
+    <a href='{{url_for('showGenres')}}'> Cancel</a>
 
 	</body>
 </html>
