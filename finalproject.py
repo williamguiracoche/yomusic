@@ -2,57 +2,58 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-#Fake Restaurants
-restaurant = {'name': 'The CRUDdy Crab', 'id': '1'}
+#Sample Genres
+genre = {'name': 'Rock', 'id': '1'}
 
-restaurants = [{'name': 'The CRUDdy Crab', 'id': '1'}, {'name':'Blue Burgers', 'id':'2'},{'name':'Taco Hut', 'id':'3'}]
+genres = [{'name': 'Rock', 'id': '1'}, {'name':'Hip Hop', 'id':'2'},{'name':'Electronic', 'id':'3'}]
 
 
-#Fake Menu Items
-items = [ {'name':'Cheese Pizza', 'description':'made with fresh cheese', 'price':'$5.99','course' :'Entree', 'id':'1'}, {'name':'Chocolate Cake','description':'made with Dutch Chocolate', 'price':'$3.99', 'course':'Dessert','id':'2'},{'name':'Caesar Salad', 'description':'with fresh organic vegetables','price':'$5.99', 'course':'Entree','id':'3'},{'name':'Iced Tea', 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},{'name':'Spinach Dip', 'description':'creamy dip with fresh spinach','price':'$1.99', 'course':'Appetizer','id':'5'} ]
-item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$5.99','course' :'Entree'}
+#Sample Playlists
+songs = [ {'name':'Mr. Brightside', 'artist':'The Killers', 'album':'Hot Fuss', 'id':'1'}, {'name':'Seven Nation Army','artist':'The White Stripes', 'album':'Elephant','id':'2'},{'name':'Uprising','artist':'Muse', 'album':'The Resistance','id':'3'},{'name':'Do I Wanna Know?','artist':'Arctic Monkeys', 'album':'AM','id':'4'},{'name':'Welcome to the Black Parade','artist':'My Chemical Romance', 'album':'The Black Parade','id':'5'} ]
+song =  {'name':'Mr. Brightside', 'artist':'The Killers', 'album':'Hot Fuss'}
 
 @app.route('/')
-@app.route('/restaurants')
-def showRestaurants():
-    #output = "This page will show all my restaurants"
-    return render_template('restaurants.html', restaurants = restaurants)
+@app.route('/music')
+@app.route('/genres')
+def showGenres():
+    output = "This page will show all my genres"
+    #return render_template('genres.html', genres = genres)
 
-@app.route('/restaurant/new')
-def newRestaurant():
-    #output = "This page will be for making a new restaurant"
-    return render_template('newRestaurant.html')
+@app.route('/genre/new')
+def newGenre():
+    output = "This page will be for making a new genre"
+    #return render_template('newGenre.html')
 
-@app.route('/restaurant/<int:restaurant_id>/edit')
-def editRestaurant(restaurant_id):
-    #output = "This page will be for editing restaurant %s" %restaurant_id
-    return render_template('editRestaurant.html', restaurant = restaurant)
+@app.route('/genre/<int:genre_id>/edit')
+def editGenre(genre_id):
+    output = "This page will be for editing genre %s" %genre_id
+    #return render_template('editGenre.html', genre = genre)
 
-@app.route('/restaurant/<int:restaurant_id>/delete')
-def deleteRestaurant(restaurant_id):
-    #output = "This page will be for deleting restaurant %s" %restaurant_id
-    return render_template('deleteRestaurant.html', restaurant = restaurant)
+@app.route('/genre/<int:genre_id>/delete')
+def deleteGenre(genre_id):
+    output = "This page will be for deleting genre %s" %genre_id
+    #return render_template('deleteGenre.html', genre = genre)
 
-@app.route('/restaurant/<int:restaurant_id>')
-@app.route('/restaurant/<int:restaurant_id>/menu')
-def showMenu(restaurant_id):
-    #output = "This page is the menu for restaurant %s" %restaurant_id
-    return render_template('menu.html',restaurant = restaurant, items = items)
+@app.route('/genre/<int:genre_id>')
+@app.route('/genre/<int:genre_id>/playlist')
+def showPlaylist(genre_id):
+    output = "This page is the playlist for genre %s" %genre_id
+    #return render_template('playlist.html',genre = genre, songs = songs)
 
-@app.route('/restaurant/<int:restaurant_id>/menu/new')
-def newMenuItem(restaurant_id):
-    #output = "This page is for making a new menu item for restaurant %s" %restaurant_id
-    return render_template('newMenu.html', restaurant = restaurant)
+@app.route('/genre/<int:genre_id>/new')
+def newSong(genre_id):
+    output = "This page is for making a new song for genre %s" %genre_id
+    #return render_template('newPlaylist.html', genre = genre)
 
-@app.route('/restaurant/<int:restaurant_id>/<int:menu_id>/edit')
-def editMenuItem(restaurant_id, menu_id):
-    #output = "This page is for editing menu item %s for restaurant %s" %(menu_id, restaurant_id)
-    return render_template('editMenu.html', restaurant = restaurant, item= item)
+@app.route('/genre/<int:genre_id>/<int:playlist_id>/edit')
+def editSong(genre_id, song_id):
+    output = "This page is for editing song %s for genre %s" %(song_id, genre_id)
+    #return render_template('editPlaylist.html', genre = genre, song= song)
 
-@app.route('/restaurant/<int:restaurant_id>/<int:menu_id>/delete')
-def deleteMenuItem(restaurant_id, menu_id):
-    #output = "This page is for deleting menu item %s for restaurant %s" %(menu_id, restaurant_id)
-    return render_template('deleteMenu.html', restaurant= restaurant, item= item)
+@app.route('/genre/<int:genre_id>/<int:song_id>/delete')
+def deleteSong(genre_id, song_id):
+    output = "This page is for deleting playlist song %s for genre %s" %(playlist_id, genre_id)
+    #return render_template('deletePlaylist.html', genre= genre, song= song)
 
 
 if __name__ == '__main__':
