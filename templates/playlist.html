@@ -5,7 +5,7 @@
 	<body>
 
     <h2>{{genre.name}} Playlist</h2>
-	<a href='#'>Add New Song</a>
+	<a href='{{url_for('newSong', genre_id= genre.id)}}'>Add New Song</a>
     <br><br>
 
     {% for song in songs %}
@@ -18,5 +18,6 @@
 
     {% endfor %}
 
+    <a href='{{url_for('showGenres')}}'>Back to all genres</a>
 	</body>
 </html>
