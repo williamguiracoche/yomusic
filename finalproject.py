@@ -66,10 +66,18 @@ def showPlaylist(genre_id):
     songs = session.query(Song).filter_by(genre= genre)
     return render_template('playlist.html', genre= genre, songs= songs)
 
-@app.route('/genre/<int:genre_id>/new')
+@app.route('/genre/<int:genre_id>/new', methods=['GET', 'POST'])
 def newSong(genre_id):
-    #return "This page is for making a new song for genre %s" %genre_id
-    return render_template('newSong.html', genre = genre)
+    genre = session.query(Genre).filter_by(id= genre_id).one()
+    if request.method == 'POST':
+        newSong = Song(name = request.form['name'], \
+            artist = request.form['artist'], album = request.form['album'],\
+            genre_id = genre_id)
+        session.add(newSong)
+        session.commit()
+        return redirect(url_for('showPlaylist', genre_id = genre_id))
+    else:
+        return render_template('newSong.html', genre = genre)
 
 @app.route('/genre/<int:genre_id>/<int:song_id>/edit')
 def editSong(genre_id, song_id):

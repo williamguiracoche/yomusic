@@ -5,7 +5,7 @@
 	<body>
 
     <h2> Add Song to {{genre.name}}</h2>
-    <form action='#' method = 'post'>
+    <form action='{{url_for('newSong', genre_id = genre.id)}}' method = 'post'>
     Name: <br>
     <input type ='text' size='30' name='name'>
     <br> <br>
@@ -16,7 +16,10 @@
     <input type ='text' size='30' name='album'>
     <br> <br>
 
-	<a href='#'> Back to {{genre.name}} Playlist</a>
+    <input type='submit' value='Create'>
+    </form>
+
+	<a href='{{url_for('showPlaylist', genre_id= genre.id)}}'> Back to {{genre.name}} Playlist</a>
 
 	</body>
 </html>
