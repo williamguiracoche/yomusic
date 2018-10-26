@@ -32,7 +32,7 @@ class Song(Base):
     video_url = Column(String(250))
     genre_id = Column(Integer, ForeignKey('genre.id'))
     genre = relationship(Genre)
-
+    
     @property
     def serialize(self):
 
