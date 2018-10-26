@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Genre, Song
@@ -10,6 +10,22 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+
+@app.route('/genres/JSON')
+def genresJSON():
+    genres = session.query(Genre).all()
+    return jsonify(Genres=[genre.serialize for genre in genres])
+
+@app.route('/genre/<int:genre_id>/JSON')
+def showPlaylistJSON(genre_id):
+    genre = session.query(Genre).filter_by(id=genre_id).one()
+    songs = session.query(Song).filter_by(genre_id = genre_id).all()
+    return jsonify(Playlist=[song.serialize for song in songs])
+
+@app.route('/genre/<int:genre_id>/<int:song_id>/JSON')
+def showSongJSON(genre_id, song_id):
+    song = session.query(Song).filter_by(id = song_id).one()
+    return jsonify(Song=song.serialize)
 
 @app.route('/')
 @app.route('/music')
