@@ -11,16 +11,6 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-#Sample Genres
-genre = {'name': 'Rock', 'id': '1'}
-
-genres = [{'name': 'Rock', 'id': '1'}, {'name':'Hip Hop', 'id':'2'},{'name':'Electronic', 'id':'3'}]
-
-
-#Sample Playlists
-songs = [ {'name':'Mr. Brightside', 'artist':'The Killers', 'album':'Hot Fuss', 'id':'1'}, {'name':'Seven Nation Army','artist':'The White Stripes', 'album':'Elephant','id':'2'},{'name':'Uprising','artist':'Muse', 'album':'The Resistance','id':'3'},{'name':'Do I Wanna Know?','artist':'Arctic Monkeys', 'album':'AM','id':'4'},{'name':'Welcome to the Black Parade','artist':'My Chemical Romance', 'album':'The Black Parade','id':'5'} ]
-song =  {'name':'Mr. Brightside', 'artist':'The Killers', 'album':'Hot Fuss'}
-
 @app.route('/')
 @app.route('/music')
 @app.route('/genres')
