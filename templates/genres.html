@@ -15,6 +15,15 @@
     </header>
 
     <main>
+        <!--MESSAGE FLASHING EXAMPLE -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+          <strong>{{message}}</strong>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+
         <div class="page_description">
             <h2>Your genres</h2>
             <a class="create_link" href="{{ url_for('newGenre')}}">Add New Genre</a>

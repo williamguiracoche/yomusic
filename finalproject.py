@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Genre, Song
@@ -40,6 +40,7 @@ def newGenre():
         newGenre = Genre(name=request.form['name'])
         session.add(newGenre)
         session.commit()
+        flash("New genre created!")
         return redirect(url_for('showGenres'))
     else:
         return render_template('newGenre.html')
@@ -51,6 +52,7 @@ def editGenre(genre_id):
         editedGenre.name = request.form['name']
         session.add(editedGenre)
         session.commit()
+        flash("Genre edited.")
         return redirect(url_for('showGenres'))
     else:
         return render_template('editGenre.html', genre = editedGenre)
@@ -61,6 +63,7 @@ def deleteGenre(genre_id):
     if request.method == 'POST':
         session.delete(deletedGenre)
         session.commit()
+        flash("Genre deleted.")
         return redirect(url_for('showGenres'))
     else:
         return render_template('deleteGenre.html', genre = deletedGenre)
@@ -81,6 +84,7 @@ def newSong(genre_id):
             genre_id = genre_id)
         session.add(newSong)
         session.commit()
+        flash("Song added!")
         return redirect(url_for('showPlaylist', genre_id = genre_id))
     else:
         return render_template('newSong.html', genre = genre)
@@ -98,6 +102,7 @@ def editSong(genre_id, song_id):
             editedSong.album = request.form['album']
         session.add(editedSong)
         session.commit()
+        flash("Song edited.")
         return redirect(url_for('showPlaylist', genre_id = genre_id))
     else:
         return render_template('editSong.html', genre = genre, song= editedSong)
@@ -109,11 +114,13 @@ def deleteSong(genre_id, song_id):
     if request.method == 'POST':
         session.delete(deletedSong)
         session.commit()
+        flash("Song deleted.")
         return redirect(url_for('showPlaylist', genre_id= genre_id))
     else:
         return render_template('deleteSong.html', genre= genre, song= deletedSong)
 
 
 if __name__ == '__main__':
+    app.secret_key = 'secret_key'
     app.debug = True
     app.run(host='0.0.0.0', port=5000)

@@ -15,27 +15,35 @@
     </header>
 
     <main>
+        <!--MESSAGE FLASHING EXAMPLE -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+          <strong>{{message}}</strong>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
 
-    <h2>{{genre.name}} Playlist</h2>
-	<a href='{{url_for('newSong', genre_id= genre.id)}}'>Add New Song</a>
-    <br><br>
+        <h2>{{genre.name}} Playlist</h2>
+    	<a href='{{url_for('newSong', genre_id= genre.id)}}'>Add New Song</a>
+        <br><br>
 
-    {% for song in songs %}
-        <div class="song">
-            <div class="name_and_artist">
-                <span class = 'song_name'> {{song.name}} - </span>
-                <span class = 'artist'> {{song.artist}} </span>
+        {% for song in songs %}
+            <div class="song">
+                <div class="name_and_artist">
+                    <span class = 'song_name'> {{song.name}} - </span>
+                    <span class = 'artist'> {{song.artist}} </span>
+                </div>
+                <div class="edit_delete">
+                    <a href='{{url_for('editSong', genre_id= genre.id, song_id= song.id)}}'>Edit</a>
+                    <a href='{{url_for('deleteSong', genre_id= genre.id, song_id= song.id)}}'>Delete</a>
+                </div>
             </div>
-            <div class="edit_delete">
-                <a href='{{url_for('editSong', genre_id= genre.id, song_id= song.id)}}'>Edit</a>
-                <a href='{{url_for('deleteSong', genre_id= genre.id, song_id= song.id)}}'>Delete</a>
-            </div>
-        </div>
 
-    {% endfor %}
+        {% endfor %}
 
 
-    <a href='{{url_for('showGenres')}}'>Back to all genres</a>
+        <a href='{{url_for('showGenres')}}'>Back to all genres</a>
     </main>
 	</body>
 </html>
