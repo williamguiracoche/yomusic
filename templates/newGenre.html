@@ -1,22 +1,31 @@
-<html>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
-    <head>
-        <h1> YoMusic </h1>
-    </head>
-	<body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
+    <title>YoMusic</title>
+</head>
 
-    <h2>Add New Genre</h2>
-    <form action="{{ url_for('newGenre')}}" method = 'post'>
-    <dl>
-    	<dt>Name:</dt>
-    	<dd><input type ='text' size='20' name='name'></dd>
-    </dl>
+<body>
+    <header>
+        <a href="{{url_for('showGenres')}}">
+            <h1> YoMusic </h1>
+        </a>
+        <p>Will's fave collection</p>
+    </header>
 
-    <input type='submit' value='Create'>
-    </form>
+    <main>
+        <div class="top">
+            <h2>Add New Genre</h2>
+        </div>
+        <form action="{{ url_for('newGenre')}}" method = 'post'>
+        	Name:
+        	<dd><input type ='text' size='20' name='name'></dd>
 
+        <input type='submit' value='Create'>
+        </form>
 
-	<a href='{{url_for('showGenres')}}'> Back to Genres</a>
-
-	</body>
+	       <a href='{{url_for('showGenres')}}'> Back to Genres</a>
+    </main>
+</body>
 </html>
