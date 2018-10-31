@@ -1,0 +1,147 @@
+/* :root {
+    --body-text-color: #C5C6C7;
+    --html-background-color: #33333;
+    --article-background-color: #1a2930;
+    --h3-text-color: #f7ce3e;
+    --projects-text-color: #efe4b7;
+    --header-background-color: #116466;
+    --main-background-color: #D9B08C;
+}
+
+header,
+nav,
+footer,
+section,
+a,
+div {
+    font-family: Georgia, serif;
+    box-sizing: border-box;
+}
+
+body{
+  margin: 10px;
+  padding: 5px;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--html-background-color);
+  font-family: sans-serif;
+  color: var(--body-text-color);
+}
+
+header{
+    display: inline-block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--header-background-color);
+}
+
+main {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--main-background-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+.genre_name{
+    font-size: 1.5em;
+    color: red;
+} */
+
+
+body {
+    font-family: 'georgia', sans-serif;
+    background-color: #eee;
+    width: 90%;
+    margin: auto;
+}
+
+main {
+    padding-top: 10px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #3a71ea;
+}
+
+h1,
+h2 {
+    font-family: 'georgia', serif;
+    margin: 0;
+}
+
+header {
+    padding-top: 5px;
+    border-bottom: 2px solid black;
+    left: 50%;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+p  {
+    color: #000777;
+}
+
+a, span {
+    text-decoration: none;
+    color: #000777;
+    font-size: 1em;
+}
+
+a:hover {
+    background-color: #d3e4ff;
+}
+
+.list_header {
+    padding:5px;
+}
+
+.genre {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.genre_name {
+    width: 100%;
+    display: inline-block;
+    float: left;
+    font-size: 2em;
+}
+
+.genre_name:hover {
+    background-color: #d3e4ff;
+}
+
+.song {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.song_name_and_artist {
+    width: 100%;
+    display: inline-block;
+    float: left;
+    font-size: 2em;
+}
+
+.list_header{
+    font-size: 1.5em;
+}
+
+.flash {
+    background: #cee5f5;
+}
