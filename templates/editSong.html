@@ -1,23 +1,36 @@
-<html>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
-    <head>
-        <h1> YoMusic </h1>
-    </head>
-	<body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
+    <title>YoMusic</title>
+</head>
 
-    <h2>Edit Song</h2>
-    <form action='{{url_for('editSong', genre_id= genre.id, song_id = song.id)}}' method = 'post'>
-    	Name: <br>
-    	<input type ='text' size='30' name='name' placeholder="{{song.name}}">
-        <br><br>
-        Artist <br>
-        <input type ='text' size='30' name='artist' placeholder="{{song.artist}}">
-        <br><br>
-        Album: <br>
-        <input type ='text' size='30' name='album' placeholder="{{song.album}}">
-        <br><br>
-        <input type='submit' value='Edit'>
-    </form>
-    <a href='{{url_for('showPlaylist', genre_id = genre.id)}}'> Cancel</a>
-	</body>
+<body>
+    <header>
+        <a href="{{url_for('showGenres')}}">
+            <h1> YoMusic </h1>
+        </a>
+        <p>Will's fave collection</p>
+    </header>
+
+    <main>
+        <div class="page_description" >
+            <h2>Edit Song</h2>
+        </div>
+        <form action='{{url_for('editSong', genre_id= genre.id, song_id = song.id)}}' method = 'post'>
+        	Name: <br>
+        	<input type ='text' size='30' name='name' placeholder="{{song.name}}">
+            <br><br>
+            Artist <br>
+            <input type ='text' size='30' name='artist' placeholder="{{song.artist}}">
+            <br><br>
+            Album: <br>
+            <input type ='text' size='30' name='album' placeholder="{{song.album}}">
+            <br><br>
+            <input type='submit' value='Edit'>
+        </form>
+        <a href='{{url_for('showPlaylist', genre_id = genre.id)}}'> Cancel</a>
+    </main>
+</body>
 </html>
