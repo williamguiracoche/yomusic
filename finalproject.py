@@ -27,9 +27,9 @@ def showSongJSON(genre_id, song_id):
     song = session.query(Song).filter_by(id = song_id).one()
     return jsonify(Song=song.serialize)
 
-@app.route('/')
-@app.route('/music')
 @app.route('/genres')
+@app.route('/music')
+@app.route('/')
 def showGenres():
     genres = session.query(Genre).all()
     return render_template('genres.html', genres = genres)

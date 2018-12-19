@@ -1,49 +1,25 @@
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
-    <title>YoMusic</title>
-</head>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
 
-<body>
-    <header>
-        <a href="{{url_for('showGenres')}}">
-            <h1> YoMusic </h1>
-        </a>
-        <p>Will's fave collection</p>
-    </header>
+<h2>{{genre.name}} Playlist</h2>
+<a href='{{url_for('newSong', genre_id= genre.id)}}'>Add New Song</a>
+<br><br>
 
-    <main>
-        <!--MESSAGE FLASHING EXAMPLE -->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-          <strong>{{message}}</strong>
-          {% endfor %}
-        {% endif %}
-        {% endwith %}
+{% for song in songs %}
+    <div class="song">
+        <div class="name_and_artist">
+            <span class = 'song_name'> {{song.name}} - </span>
+            <span class = 'artist'> {{song.artist}} </span>
+        </div>
+        <div class="edit_delete">
+            <a href='{{url_for('editSong', genre_id= genre.id, song_id= song.id)}}'>Edit</a>
+            <a href='{{url_for('deleteSong', genre_id= genre.id, song_id= song.id)}}'>Delete</a>
+        </div>
+    </div>
 
-        <h2>{{genre.name}} Playlist</h2>
-    	<a href='{{url_for('newSong', genre_id= genre.id)}}'>Add New Song</a>
-        <br><br>
-
-        {% for song in songs %}
-            <div class="song">
-                <div class="name_and_artist">
-                    <span class = 'song_name'> {{song.name}} - </span>
-                    <span class = 'artist'> {{song.artist}} </span>
-                </div>
-                <div class="edit_delete">
-                    <a href='{{url_for('editSong', genre_id= genre.id, song_id= song.id)}}'>Edit</a>
-                    <a href='{{url_for('deleteSong', genre_id= genre.id, song_id= song.id)}}'>Delete</a>
-                </div>
-            </div>
-
-        {% endfor %}
+{% endfor %}
 
 
-        <a href='{{url_for('showGenres')}}'>Back to all genres</a>
-    </main>
-	</body>
-</html>
+<a href='{{url_for('showGenres')}}'>Back to all genres</a>
+{% endblock %}

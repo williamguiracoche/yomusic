@@ -110,7 +110,15 @@ a:hover {
     background-color: #d3e4ff;
 }
 
+.home-direct{
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+}
 
+.home-direct:hover{
+    background-color: inherit;
+}
 .page_description{
     font-size: 1.2em;
     padding:5px;

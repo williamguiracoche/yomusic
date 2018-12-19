@@ -1,20 +1,6 @@
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
-    <title>YoMusic</title>
-</head>
-
-<body>
-    <header>
-        <a href="{{url_for('showGenres')}}">
-            <h1> YoMusic </h1>
-        </a>
-        <p>Will's fave collection</p>
-    </header>
-
-    <main>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
         <div class="page_description">
             <h2> Add Song to {{genre.name}}</h2>
         </div>
@@ -33,6 +19,4 @@
         </form>
 
     	<a href='{{url_for('showPlaylist', genre_id= genre.id)}}'> Back to {{genre.name}} Playlist</a>
-    </main>
-</body>
-</html>
+{% endblock %}

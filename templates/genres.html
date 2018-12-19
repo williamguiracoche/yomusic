@@ -1,44 +1,19 @@
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
-    <title>YoMusic</title>
-</head>
-
-<body>
-    <header>
-        <a href="{{url_for('showGenres')}}">
-            <h1> YoMusic </h1>
-        </a>
-        <p>Will's fave collection</p>
-    </header>
-
-    <main>
-        <!--MESSAGE FLASHING EXAMPLE -->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-          <strong>{{message}}</strong>
-          {% endfor %}
-        {% endif %}
-        {% endwith %}
-
-        <div class="page_description">
-            <h2>Your genres</h2>
-            <a class="create_link" href="{{ url_for('newGenre')}}">Add New Genre</a>
-        </div>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="page_description">
+    <h2>Your genres</h2>
+    <a class="create_link" href="{{ url_for('newGenre')}}">Add New Genre</a>
+</div>
 
 
-        {% for genre in genres %}
-        <div class="genre">
-            <a class= 'genre_name' href='{{ url_for('showPlaylist', genre_id = genre.id)}}'>{{genre.name}}</a>
-            <div class="edit_delete">
-                <a href='{{ url_for('editGenre', genre_id = genre.id)}}'>Edit</a>
-                <a href='{{ url_for('deleteGenre', genre_id = genre.id)}}'> Delete</a>
-            </div>
-        </div>
-        {% endfor %}
-    </main>
-</body>
-</html>
+{% for genre in genres %}
+<div class="genre">
+    <a class= 'genre_name' href='{{ url_for('showPlaylist', genre_id = genre.id)}}'>{{genre.name}}</a>
+    <div class="edit_delete">
+        <a href='{{ url_for('editGenre', genre_id = genre.id)}}'>Edit</a>
+        <a href='{{ url_for('deleteGenre', genre_id = genre.id)}}'> Delete</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
