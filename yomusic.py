@@ -206,11 +206,16 @@ def showGenres():
 
 @app.route('/genre/new', methods=['GET', 'POST'])
 def newGenre():
+    if 'username' not in login_session:
+        return redirect('/login')
     if request.method == 'POST':
-        newGenre = Genre(name=request.form['name'])
-        session.add(newGenre)
-        session.commit()
-        flash("New genre created!")
+        try:
+            newGenre = Genre(name=request.form['name'], user_id=login_session['user_id'])
+            session.add(newGenre)
+            flash('Created %s' % newGenre.name)
+            session.commit()
+        except:
+            session.rollback()
         return redirect(url_for('showGenres'))
     else:
         return render_template('newGenre.html')
