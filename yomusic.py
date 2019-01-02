@@ -240,10 +240,14 @@ def editGenre(genre_id):
 @app.route('/genre/<int:genre_id>/delete', methods=['GET', 'POST'])
 def deleteGenre(genre_id):
     deletedGenre = session.query(Genre).filter_by(id= genre_id).one()
+    if 'username' not in login_session:
+        return redirect('/login')
+    if deletedGenre.user_id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not authorized to delete. Please create your own genre in order to delete.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         session.delete(deletedGenre)
         session.commit()
-        flash("Genre deleted.")
+        flash('%s Successfully Deleted' % deletedGenre.name)
         return redirect(url_for('showGenres'))
     else:
         return render_template('deleteGenre.html', genre = deletedGenre)
