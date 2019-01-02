@@ -199,7 +199,10 @@ def showSongJSON(genre_id, song_id):
 @app.route('/')
 def showGenres():
     genres = session.query(Genre).all()
-    return render_template('genres.html', genres = genres)
+    if 'username' not in login_session:
+        return render_template('publicGenres.html', genres=genres)
+    else:
+        return render_template('genres.html', genres = genres)
 
 @app.route('/genre/new', methods=['GET', 'POST'])
 def newGenre():
