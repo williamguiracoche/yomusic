@@ -1,0 +1,18 @@
+<header>
+    <a class= "home-direct" href="{{url_for('showGenres')}}">
+        <img src="{{ url_for('static', filename='icon.png') }}" alt="Yo Music" height="42" width="42">
+        <h1> YoMusic </h1>
+    </a>
+    <p>Your favorite collection</p>
+    <a class="login_button" href="{{url_for('showLogin')}}">Login</a>
+</header>
+<div class="flash-message">
+    <!--MESSAGE FLASHING EXAMPLE -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+      <strong>{{message}}</strong>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>

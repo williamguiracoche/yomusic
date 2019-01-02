@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "publicHeader.html" %}
+<div class="page_description">
+    <h2>Genres</h2>
+</div>
+
+
+{% for genre in genres %}
+<div class="genre">
+    <a class= 'genre_name' href='{{ url_for('showPlaylist', genre_id = genre.id)}}'>{{genre.name}}</a>
+</div>
+{% endfor %}
+{% endblock %}
