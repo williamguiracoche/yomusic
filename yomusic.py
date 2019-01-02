@@ -223,12 +223,17 @@ def newGenre():
 @app.route('/genre/<int:genre_id>/edit', methods=['GET', 'POST'])
 def editGenre(genre_id):
     editedGenre = session.query(Genre).filter_by(id = genre_id).one()
+    if 'username' not in login_session:
+        return redirect('/login')
+    if editedGenre.user_id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not authorized to edit. Please create your own genre in order to edit.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
-        editedGenre.name = request.form['name']
-        session.add(editedGenre)
-        session.commit()
-        flash("Genre edited.")
-        return redirect(url_for('showGenres'))
+        if request.form['name']:
+            editedGenre.name = request.form['name']
+            session.add(editedGenre)
+            session.commit()
+            flash('Successfully Edited %s' % editedGenre.name)
+            return redirect(url_for('showGenres'))
     else:
         return render_template('editGenre.html', genre = editedGenre)
 
