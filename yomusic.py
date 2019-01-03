@@ -202,7 +202,8 @@ def showGenres():
     if 'username' not in login_session:
         return render_template('publicGenres.html', genres=genres)
     else:
-        return render_template('genres.html', genres = genres)
+        user_id = login_session['user_id']
+        return render_template('genres.html', genres = genres, user_id=user_id)
 
 @app.route('/genre/new', methods=['GET', 'POST'])
 def newGenre():
