@@ -284,8 +284,12 @@ def newSong(genre_id):
 
 @app.route('/genre/<int:genre_id>/<int:song_id>/edit', methods=['GET', 'POST'])
 def editSong(genre_id, song_id):
+    if 'username' not in login_session:
+        return redirect('/login')
     genre = session.query(Genre).filter_by(id= genre_id).one()
     editedSong = session.query(Song).filter_by(id= song_id).one()
+    if login_session['user_id'] != restaurant.user_id:
+        return "<script>function myFunction() {alert('You are not authorized to edit songs in this playlist. Please create your own playlist in order to edit your songs.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         if request.form['name']:
             editedSong.name = request.form['name']
