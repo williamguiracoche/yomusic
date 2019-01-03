@@ -288,7 +288,7 @@ def editSong(genre_id, song_id):
         return redirect('/login')
     genre = session.query(Genre).filter_by(id= genre_id).one()
     editedSong = session.query(Song).filter_by(id= song_id).one()
-    if login_session['user_id'] != restaurant.user_id:
+    if login_session['user_id'] != genre.user_id:
         return "<script>function myFunction() {alert('You are not authorized to edit songs in this playlist. Please create your own playlist in order to edit your songs.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         if request.form['name']:
@@ -308,7 +308,7 @@ def editSong(genre_id, song_id):
 def deleteSong(genre_id, song_id):
     if 'username' not in login_session:
         return redirect('/login')
-    if login_session['user_id'] != restaurant.user_id:
+    if login_session['user_id'] != genre.user_id:
         return "<script>function myFunction() {alert('You are not authorized to delete songs in this playlist.');}</script><body onload='myFunction()'>"
     genre = session.query(Genre).filter_by(id= genre_id).one()
     deletedSong = session.query(Song).filter_by(id= song_id).one()
