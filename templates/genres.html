@@ -10,10 +10,12 @@
 {% for genre in genres %}
 <div class="genre">
     <a class= 'genre_name' href='{{ url_for('showPlaylist', genre_id = genre.id)}}'>{{genre.name}}</a>
+    {% if user_id == genre.user_id%}
     <div class="edit_delete">
         <a href='{{ url_for('editGenre', genre_id = genre.id)}}'>Edit</a>
         <a href='{{ url_for('deleteGenre', genre_id = genre.id)}}'> Delete</a>
     </div>
+    {% endif %}
 </div>
 {% endfor %}
 {% endblock %}
