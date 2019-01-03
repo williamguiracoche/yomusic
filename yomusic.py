@@ -306,6 +306,10 @@ def editSong(genre_id, song_id):
 
 @app.route('/genre/<int:genre_id>/<int:song_id>/delete', methods=['GET', 'POST'])
 def deleteSong(genre_id, song_id):
+    if 'username' not in login_session:
+        return redirect('/login')
+    if login_session['user_id'] != restaurant.user_id:
+        return "<script>function myFunction() {alert('You are not authorized to delete songs in this playlist.');}</script><body onload='myFunction()'>"
     genre = session.query(Genre).filter_by(id= genre_id).one()
     deletedSong = session.query(Song).filter_by(id= song_id).one()
     if request.method == 'POST':
