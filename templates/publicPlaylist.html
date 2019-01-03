@@ -3,7 +3,7 @@
 {% include "publicHeader.html" %}
 
 <h2>{{genre.name}} Playlist</h2>
-<a href='{{url_for('newSong', genre_id= genre.id)}}'>Add New Song</a>
+<p>Created by {{creator.name}}</p>
 <br><br>
 
 {% for song in songs %}
