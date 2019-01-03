@@ -257,8 +257,12 @@ def deleteGenre(genre_id):
 @app.route('/genre/<int:genre_id>/playlist')
 def showPlaylist(genre_id):
     genre = session.query(Genre).filter_by(id= genre_id).one()
-    songs = session.query(Song).filter_by(genre= genre)
-    return render_template('playlist.html', genre= genre, songs= songs)
+    creator = getUserInfo(genre.user_id)
+    songs = session.query(Song).filter_by(genre= genre).all()
+    if 'username' not in login_session or creator.id != login_session['user_id']:
+        return render_template('publicPlaylist.html', genre= genre, songs= songs, creator=creator)
+    else:
+        return render_template('playlist.html', genre= genre, songs= songs, creator=creator)
 
 @app.route('/genre/<int:genre_id>/new', methods=['GET', 'POST'])
 def newSong(genre_id):
