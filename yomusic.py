@@ -266,14 +266,18 @@ def showPlaylist(genre_id):
 
 @app.route('/genre/<int:genre_id>/new', methods=['GET', 'POST'])
 def newSong(genre_id):
+    if 'username' not in login_session:
+        return redirect('/login')
     genre = session.query(Genre).filter_by(id= genre_id).one()
+    if login_session['user_id'] != genre.user_id:
+        return "<script>function myFunction() {alert('You are not authorized to add songs to this playlist. Please create your own playlist in order to add songs.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         newSong = Song(name = request.form['name'], \
             artist = request.form['artist'], album = request.form['album'],\
             genre_id = genre_id)
         session.add(newSong)
         session.commit()
-        flash("Song added!")
+        flash('%s Successfully Added' % (newSong.name))
         return redirect(url_for('showPlaylist', genre_id = genre_id))
     else:
         return render_template('newSong.html', genre = genre)
